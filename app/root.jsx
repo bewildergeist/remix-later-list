@@ -9,7 +9,13 @@ import {
 
 import tailwind from "./tailwind.css";
 
-export const links = () => [{ rel: "stylesheet", href: tailwind }];
+export const links = () => [
+  { rel: "stylesheet", href: tailwind },
+  {
+    rel: "manifest",
+    href: "/site.webmanifest",
+  },
+];
 
 export const meta = () => ({
   charset: "utf-8",
