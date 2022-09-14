@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 
 export default function Card({ title, href, imageUrl, category, duration }) {
   return (
-    <article className="my-4 overflow-hidden rounded-lg border border-l-slate-300  bg-white shadow-lg">
+    <article className="my-4 max-w-lg overflow-hidden rounded-lg border border-l-slate-300 bg-white shadow-lg">
       <Link to={href}>
         {imageUrl ? (
           <img

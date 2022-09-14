@@ -31,7 +31,7 @@ export default function Index() {
           Nothing saved yet
         </p>
       ) : (
-        <div className="m-4">
+        <div className="mx-4 mt-4 mb-8">
           {savedItems.map((item) => {
             return (
               <Card
