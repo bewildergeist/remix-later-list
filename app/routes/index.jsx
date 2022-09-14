@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { getRecords } from "~/helpers/airtable.js";
+import { getRecords, deleteRecordById } from "~/helpers/airtable.js";
 import Card from "~/components/Card";
 
 export async function loader({ request }) {
@@ -12,6 +12,18 @@ export async function loader({ request }) {
       ? records
       : records.filter((record) => record.fields.Category === category);
   return json(recordsToShow);
+}
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  if (formData.get("_action") === "delete") {
+    try {
+      await deleteRecordById(formData.get("id"));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  return null;
 }
 
 export default function Index() {
@@ -36,8 +48,9 @@ export default function Index() {
             return (
               <Card
                 key={item.id}
+                id={item.id}
                 title={item.fields?.Title}
-                href={`/items/${item.id}`}
+                href={item.fields?.URL}
                 imageUrl={item.fields?.Image?.[0]?.url}
                 category={item.fields?.Category}
                 duration={item.fields?.Duration}
