@@ -8,6 +8,11 @@ export async function action({ request }) {
   await createRecord({
     ...fields,
     Duration: Number(formData.get("Duration")),
+    Image: [
+      {
+        url: formData.get("Image"),
+      },
+    ],
   });
   return redirect("/saved");
 }
@@ -19,6 +24,12 @@ export default function New() {
       <Form method="post">
         <Input type="text" name="Title" placeholder="Title" label="Title" />
         <Input type="text" name="URL" placeholder="URL" label="URL" />
+        <Input
+          type="text"
+          name="Image"
+          placeholder="Image URL"
+          label="Image URL"
+        />
         <Input
           type="number"
           name="Duration"
