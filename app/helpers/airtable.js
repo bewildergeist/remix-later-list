@@ -22,6 +22,21 @@ export async function getRecordById(id) {
   ).then((res) => res.json());
 }
 
+export async function createRecord(fields = {}) {
+  console.log({ fields });
+  return fetch(
+    `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}`,
+    {
+      method: "POST",
+      headers: {
+        ...authHeaders,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fields: fields }),
+    }
+  );
+}
+
 export async function deleteRecordById(id) {
   return fetch(
     `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_ID}/${id}`,
