@@ -62,7 +62,7 @@ export default function Index() {
       <Outlet />
       <Link
         to="new"
-        className="absolute bottom-3 right-3 rounded-full border border-amber-400 bg-yellow-200 p-6 shadow-lg transition-colors hover:bg-yellow-300">
+        className="fixed bottom-3 right-3 rounded-full border border-amber-400 bg-yellow-200 p-6 shadow-lg transition-colors hover:bg-yellow-300">
         <AddIcon />
       </Link>
     </div>
